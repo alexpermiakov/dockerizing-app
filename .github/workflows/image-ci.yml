@@ -44,7 +44,7 @@ jobs:
       - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: ${{ steps.meta.outputs.images }}
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/image-ci:latest
           format: table
           exit-code: 1
           ignore-unfixed: true
