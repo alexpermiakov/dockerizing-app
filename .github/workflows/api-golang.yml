@@ -1,4 +1,4 @@
-name: image-ci
+name: api-golang
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ${{ secrets.DOCKER_USERNAME }}/image-ci
+            ${{ secrets.DOCKER_USERNAME }}/api-golang
           tags: |
             type=raw,value=latest
             type=ref,event=branch
@@ -37,14 +37,14 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v4
         with:
-          context: ./api-node/
+          context: ./api-golang/
           push: true
           tags: ${{ steps.meta.outputs.tags }}
 
       - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: ${{ secrets.DOCKER_USERNAME }}/image-ci:latest
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/api-golang:latest
           format: table
           exit-code: 1
           ignore-unfixed: true
