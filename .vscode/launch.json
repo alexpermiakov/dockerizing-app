@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Docker: Attach to Node",
+      "port": 9229,
+      "remoteRoot": "/app",
+      "localRoot": "${workspaceFolder}/api-node",
+    },
+    {
+      "type": "go",
+      "request": "attach",
+      "name": "Docker: Attach to Golang",
+      "port": 4000,
+      "mode": "remote",
+      "debugAdapter": "dlv-dap",
+      "remotePath": "/app",
+      "substitutePath": [{
+        "from": "${workspaceFolder}/api-golang",
+        "to": "/app"
+      }]
+    }
+  ]
+}

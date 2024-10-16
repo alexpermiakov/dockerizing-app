@@ -1,0 +1,13 @@
+services:
+  api-node-dev:
+    command:
+      - "npm"
+      - "run"
+      - "test"
+
+  api-golang-dev:
+    command: 
+      - "go"
+      - "test"
+      - "-v"
+      - "./..."
