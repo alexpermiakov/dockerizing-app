@@ -21,7 +21,7 @@ jobs:
         with:
           images: |
             ${{ secrets.DOCKER_USERNAME }}/image-ci
-          tags: 
+          tags: |
             type=raw,value=latest
             type=raw,value={{date: 'YYYYMMDD'}}-{{sha}}
             type=ref,event=branch
